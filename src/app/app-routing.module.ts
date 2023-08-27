@@ -10,11 +10,10 @@ const routes: Routes = [
     path: 'view',
     loadChildren: () => import('./posts/posts.module').then(p => p.PostsModule)
   },
-  // {
-  //   path: '',
-  //   redirectTo: '',
-  //   pathMatch: 'full'
-  // }
+  {
+    path: '',
+    loadChildren: () => import('./posts/posts.module').then(p => p.PostsModule)
+  }
  
 ];
 

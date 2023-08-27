@@ -1,0 +1,36 @@
+<section>
+    <!-- Add new post modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal" >Add Post</button>
+
+    <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPostModalLabel">Add New Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- add form -->
+                <form [formGroup]="addPostForm" (ngSubmit)="addPost(addPostForm)">
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" id="title" formControlName="title">
+
+                        <p *ngIf="addPostForm.get('title')?.touched && addPostForm.get('title')?.errors?.['required']" class="small text-danger">This field is required</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="body-text" class="col-form-label">Body:</label>
+                        <textarea class="form-control" id="body-text" formControlName="body"></textarea>
+
+                        <p *ngIf="addPostForm.get('body')?.touched && addPostForm.get('body')?.errors?.['required']" class="small text-danger">This field is required</p>
+                        <p *ngIf="addPostForm.get('body')?.touched && addPostForm.get('body')?.errors?.['minlength']" class="small text-danger">The min length for body is (10) char</p>
+                    </div>
+
+                    <button type="submit" [disabled]="addPostForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,1 +1,29 @@
-<p>post-crud works!***</p>
+<div class="parent">
+    <app-add-post-form></app-add-post-form>
+
+   <section>
+    <table class="table  table-striped mt-5">
+        <thead>
+          <tr>
+            <th scope="col h2">#</th>
+            <th scope="col h2">Post</th>
+            <th scope="col h2">Edit</th>
+            <th scope="col h2">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts; let index =index">
+            <th scope="row">{{index+1}}</th>
+            <td>
+                <h5>{{post.title}}</h5>
+                <p>{{post.body}}</p>
+
+            </td>
+            <td class="text-center me-3"><i class="fa-solid fa-pen-to-square"></i></td>
+            <td class="text-center"><i class="fa-solid fa-trash-can"></i></td>
+          </tr>
+        
+        </tbody>
+      </table>
+   </section>
+</div>
