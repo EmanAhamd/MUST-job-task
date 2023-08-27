@@ -11,7 +11,7 @@ const routes: Routes = [
   
   { 
     path: 'managePosts',
-    loadChildren: () => import('./manage-post//manage-post.module').then(m => m.ManagePostModule)
+    loadChildren: () => import('./manage-post/manage-post.module').then(m => m.ManagePostModule)
   },
 
 ];
