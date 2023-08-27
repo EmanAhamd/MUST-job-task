@@ -1,1 +1,12 @@
-<p>posts works!</p>
+<div class="parent mb-5">
+    <div class="card">
+        <h3 class="card-header text-center">Today's Posts</h3>
+        <div class="row mt-5 ">
+            <input [(ngModel)]="term" type="text" placeholder=" &#xF002; search by title"
+                style="font-family:Arial, FontAwesome" class="form-control w-75 m-auto">
+        </div>
+        <div class="row">
+            <app-post-item [myPosts]="allPosts" [term]="term"></app-post-item>
+        </div>
+      </div>
+</div>
