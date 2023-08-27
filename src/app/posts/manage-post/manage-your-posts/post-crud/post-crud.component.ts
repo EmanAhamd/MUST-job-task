@@ -11,7 +11,8 @@ import { PostService } from 'src/app/core/services/post.service';
 export class PostCrudComponent implements OnInit {
 
     posts:Ipost[]= []
-  constructor(private postService:PostService){}
+
+    constructor(private postService:PostService){}
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(res => {
@@ -19,6 +20,20 @@ export class PostCrudComponent implements OnInit {
     })
   }
 
+
+  deletePost(id:any){
+    this.postService.deletePost(id).subscribe(res => {
+
+         this.posts = this.posts.filter(post => post.id !== id);
+
+         alert('Post deleted successfully!');
+
+         console.log("Deleted post id", id);
+         
+
+    })
+
+  }
   
 
 
