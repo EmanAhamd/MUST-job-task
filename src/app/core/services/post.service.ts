@@ -25,4 +25,10 @@ export class PostService {
   }
 
 
+
+  deletePost(id:any):Observable<any>{
+    return this.http.delete(`${this.baseURL}/posts/${id}`);
+  }
+
+
 }
