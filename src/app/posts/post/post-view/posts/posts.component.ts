@@ -15,8 +15,7 @@ export class PostsComponent implements OnInit{
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(res => {
-      console.log("res",res.slice(0,15));
-      this.allPosts = res.slice(0, 15);
+      this.allPosts = res.slice(10, 25);
     })
   }
 }

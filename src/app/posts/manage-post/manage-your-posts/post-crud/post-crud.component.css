@@ -1,0 +1,14 @@
+.parent{
+    margin-top: 5%;
+}
+.fa-pen-to-square,
+.fa-trash-can{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.fa-pen-to-square{
+    color: #0d6efd;
+}
+.fa-trash-can{
+    color: darkred;
+}

@@ -19,4 +19,10 @@ export class PostService {
   getAllPosts():Observable<any>{
     return this.http.get(`${this.baseURL}/posts`);
   }
+
+  addPost(post:any):Observable<any>{
+    return this.http.post(`${this.baseURL}/posts`, post);
+  }
+
+
 }
