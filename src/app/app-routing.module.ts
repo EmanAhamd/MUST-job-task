@@ -7,14 +7,14 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(a => a.AuthModule)
   },
   { 
-    path: 'allPosts',
-    loadChildren: () => import('./posts/post/post.module').then(p => p.PostModule)
+    path: 'view',
+    loadChildren: () => import('./posts/posts.module').then(p => p.PostsModule)
   },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: '',
+  //   pathMatch: 'full'
+  // }
  
 ];
 
