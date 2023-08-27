@@ -1,1 +1,5 @@
-<p>post-item works!</p>
+<div *ngFor="let post of myPosts|search:term" class="card-body mt-5 mb-3">
+    <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> {{post.title|titlecase}}</h5>
+    <p class="card-text px-5">{{post.body}}</p>
+    <a href="#" class="btn btn-primary manage-btn"> <i class="fa-solid fa-gears"></i> Manage</a>
+</div>

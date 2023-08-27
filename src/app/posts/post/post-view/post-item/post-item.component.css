@@ -1,0 +1,24 @@
+.manage-btn{
+    margin-left: 80%  
+}
+.btn-primary{
+    background-color: #002357 !important;
+    border-color: #002357 !important;
+}
+.btn-primary:hover{
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+.fa-battle-net{
+    font-size: 1.6rem;
+    color: #133466;
+}
+.card-title{
+    color:#133466 ;
+}
+.card-body{
+    border: 1px solid #0000003b;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.788);
+}
+/*  */
