@@ -11,16 +11,16 @@
             <a class="nav-link active me-5" aria-current="page" routerLink="/view/all" routerLinkActive="my-active-rout">View Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-5" routerLink="/view/managePosts" routerLinkActive="my-active-rout">Manage Posts</a>
+            <a class="nav-link me-5" *ngIf="isLogged" routerLink="/view/managePosts" routerLinkActive="my-active-rout">Manage Posts</a>
           </li>
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item me-5">
-                <a class="nav-link" routerLink="/login"  routerLinkActive="my-active-rout"> login </a>
+                <a class="nav-link" *ngIf="!isLogged" routerLink="/login"  routerLinkActive="my-active-rout"> login </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-5"  >logout </a>
+                <a class="nav-link me-5" *ngIf="isLogged" (click)="logout()" routerLinkActive="my-active-rout">logout </a>
               </li>
           </ul>
       </div>
