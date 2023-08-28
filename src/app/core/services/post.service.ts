@@ -24,7 +24,9 @@ export class PostService {
     return this.http.post(`${this.baseURL}/posts`, post);
   }
 
-
+  updatePost(id:any,post:any):Observable<any>{
+    return this.http.put(`${this.baseURL}/posts/${id}`, post);
+  }
 
   deletePost(id:any):Observable<any>{
     return this.http.delete(`${this.baseURL}/posts/${id}`);
