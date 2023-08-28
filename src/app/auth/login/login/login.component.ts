@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -29,9 +30,11 @@ export class LoginComponent {
 
       this.authService.login(loginForm.value).subscribe( {
         next: (val:any) =>{
+
           this.router.navigate(['/view/managePosts']);
           localStorage.setItem("currentUser", val.token);
           this.authService.currentUserData();
+
           this.toastr.success(`logged in successfully`,"Success", {
             closeButton: true,
             progressBar:true
@@ -44,6 +47,7 @@ export class LoginComponent {
             progressBar:true
           }); 
         }
+
       })
     }
     this.loginForm.reset();

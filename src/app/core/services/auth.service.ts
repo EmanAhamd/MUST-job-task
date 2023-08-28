@@ -10,7 +10,7 @@ import { Observable , BehaviorSubject} from 'rxjs';
 })
 export class AuthService {
 
-  userData:any = new BehaviorSubject(null)
+  userData:any = new BehaviorSubject(localStorage.getItem("currentUser"))
 
   constructor(private http:HttpClient) { }
 
@@ -23,7 +23,8 @@ export class AuthService {
     let decotedToken = jwtDecode(token);
 
     this.userData.next(decotedToken);
-    console.log("user data",  decotedToken);
     
   }
+
+
 }
