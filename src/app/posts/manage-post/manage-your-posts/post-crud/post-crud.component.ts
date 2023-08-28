@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Ipost } from 'src/app/core/models/post';
 import { PostService } from 'src/app/core/services/post.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class PostCrudComponent implements OnInit {
 
     posts:Ipost[]= []
 
-    constructor(private postService:PostService){}
+    constructor(private postService:PostService,
+      private toastr: ToastrService){}
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(res => {
@@ -39,8 +41,11 @@ export class PostCrudComponent implements OnInit {
 
       this.postService.updatePost(id, this.editPostForm.value).subscribe( {
         next: (val:any) =>{
-          alert("Updated successfully")
           console.log("Post updated to",val);
+          this.toastr.info(`Updated successfully`,":)", {
+            closeButton: true,
+            progressBar:true
+          })
         },
         error: (err:any)=> {
           console.error(err);
@@ -55,9 +60,10 @@ export class PostCrudComponent implements OnInit {
       this.postService.deletePost(id).subscribe(res => {
   
            this.posts = this.posts.filter(post => post.id !== id);
-  
-           alert('Post deleted successfully!');
-  
+           this.toastr.info(`Post deleted successfully!`,"؛)", {
+            closeButton: true,
+            progressBar:true
+          })
            console.log("Deleted post id", id);
       })
     }

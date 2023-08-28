@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent {
 
   constructor(
     private authService:AuthService,
-    private router:Router
+    private router:Router,
+    private toastr: ToastrService
     ){}
 
   loginForm: FormGroup= new FormGroup({
@@ -30,15 +32,21 @@ export class LoginComponent {
           this.router.navigate(['/view/managePosts']);
           localStorage.setItem("currentUser", val.token);
           this.authService.currentUserData();
-
+          this.toastr.success(`logged in successfully`,"Success", {
+            closeButton: true,
+            progressBar:true
+          })
 
         },
         error: (err:any)=> {
-          console.log(err.error.message,": username or password is incorrect");
-          
+          this.toastr.error("username or password is incorrect",err.error.message, {
+            closeButton: true,
+            progressBar:true
+          }); 
         }
       })
     }
+    this.loginForm.reset();
   }
 
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from 'src/app/core/services/post.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-post-form',
@@ -10,7 +10,8 @@ import { PostService } from 'src/app/core/services/post.service';
 })
 export class AddPostFormComponent {
 
-  constructor(private postService: PostService){}
+  constructor(private postService: PostService,
+    private toastr: ToastrService){}
 
   addPostForm: FormGroup= new FormGroup({
 
@@ -22,8 +23,11 @@ export class AddPostFormComponent {
     if(addForm.valid){
       this.postService.addPost(addForm.value).subscribe( {
         next: (val:any) =>{
-          alert("Added successfully")
           console.log("creat new post res",val);
+          this.toastr.info(`Added successfully`,":)", {
+            closeButton: true,
+            progressBar:true
+          })
         },
         error: (err:any)=> {
           console.error(err);
