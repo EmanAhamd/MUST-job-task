@@ -10,7 +10,6 @@ Router
 })
 export class NavbarComponent implements OnInit{
 
-  user:any;
   isLogged:boolean = false;
   
   constructor(
