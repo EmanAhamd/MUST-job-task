@@ -16,7 +16,7 @@ export class AddPostFormComponent {
 
     title: new FormControl(null, [Validators.required]),
     body: new FormControl(null, [Validators.required, Validators.minLength(10)])
-  })
+  });
 
   addPost(addForm:FormGroup){
     if(addForm.valid){
@@ -24,8 +24,6 @@ export class AddPostFormComponent {
         next: (val:any) =>{
           alert("Added successfully")
           console.log("creat new post res",val);
-          
-
         },
         error: (err:any)=> {
           console.error(err);

@@ -19,10 +19,43 @@
                 <p>{{post.body}}</p>
 
             </td>
-            <td class="text-center me-3"><i class="fa-solid fa-pen-to-square"></i></td>
+            <section>
+              <!-- edit post modal -->
+              <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- edit form -->
+                            <form #updatedFormValue [formGroup]="editPostForm">
+                                <div class="mb-3">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" formControlName="title">
+            
+                                    <p *ngIf="editPostForm.get('title')?.touched && editPostForm.get('title')?.errors?.['required']" class="small text-danger">This field is required</p>
+                                </div>
+            
+                                <div class="mb-3">
+                                    <label for="body-text" class="col-form-label">Body:</label>
+                                    <textarea class="form-control" id="body-text" formControlName="body"></textarea>
+            
+                                    <p *ngIf="editPostForm.get('body')?.touched && editPostForm.get('body')?.errors?.['required']" class="small text-danger">This field is required</p>
+                                    <p *ngIf="editPostForm.get('body')?.touched && editPostForm.get('body')?.errors?.['minlength']" class="small text-danger">The min length for body is (10) char</p>
+                                </div>
+            
+                                <button type="submit" (click)="updatePost(post.id)" [disabled]="editPostForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+          </section>
+            <td class="text-center me-3"><i (click)="editPost(post)" class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#editPostModal"></i></td>
             <td class="text-center"><i (click)="deletePost(post.id)" class="fa-solid fa-trash-can"></i></td>
           </tr>
-        
         </tbody>
       </table>
    </section>
